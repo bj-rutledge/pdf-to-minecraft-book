@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "vfBd4DjkfNh8ovDWyMew3+QNODKItJOP9Bl3Hkb/FlZ0juDDJoV+RvwfzTIj87YK/2ielJ3l6wYyyZu7wOwFHg==",
+  "dgSpecHash": "FSeWc/pPeV7he3FAyP2ruiVj90tXvp9nI23SNh63IFZ4+jb64osftFaJBoqT0hisw4WWNP3IYCmakNXdyWtTXg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\bjrut\\OneDrive\\Documents\\C#Projects\\mindcraft-pdf-to-book\\mindcraft-pdf-to-book\\mindcraft-pdf-to-book.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "D:\\OneDrive\\Documents\\C#Projects\\mindcraft-pdf-to-book\\mindcraft-pdf-to-book\\mindcraft-pdf-to-book.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\bjrut\\.nuget\\packages\\pdfpig\\0.1.7\\pdfpig.0.1.7.nupkg.sha512"
+  ],
   "logs": []
 }
