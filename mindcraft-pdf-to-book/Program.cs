@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PdfToMindcraftBook
+namespace PdfToMineCraftBook
 {
     class App
     {
@@ -8,9 +8,19 @@ namespace PdfToMindcraftBook
         static void Main(string[] strings)
         {
             Console.WriteLine("Welcome! Let's get started.");
-            PDFConversion doc = new PDFConversion("D:\\OneDrive\\Documents\\C#Projects\\mindcraft-pdf-to-book\\test-examples\\7_ThereWillComeSoftRainsbyRayBradbury.pdf");
+            TestPDF();
+        }
+
+        public static void TestPDF()
+        {
+            UX ux = new UX();
+            ux.Init();
+
+            /*PDFConversion doc= new PDFConversion(Test.Path, Test.Remove);
             doc.LoadPDF();
+            doc.ViewPDFText();
             var book = doc.GenerateBook();
+
             if (book != null)
             {
                 _ = WriteTextFile(book);
@@ -21,29 +31,18 @@ namespace PdfToMindcraftBook
             }
 
             Console.WriteLine("Done!");
+*/
         }
 
-        public static void Run()
-        {
-            bool run = true;
-            int count = 0;
+        
 
-            while (run)
-            {
-                if (count == MAX)
-                {
-                    Console.WriteLine("We've done a hundred of these... I'm getting tired. Why don't we take a break???");
-                    run = false;
-                }
-
-            }
-        }
-
-        private static async Task WriteTextFile(LinkedList<string> text)
-        {
-            await File.WriteAllLinesAsync(@"D:\OneDrive\Documents\C#Projects\mindcraft-pdf-to-book\test-examples\test-out.txt", text);
-        }
 
     }
+
+/*    internal class Test
+    {
+        public static string Path = @"D:\OneDrive\Documents\C#Projects\MineCraft-pdf-to-book\test-examples\7_ThereWillComeSoftRainsbyRayBradbury.pdf";
+        public static string[] Remove = { "1/25/13Ray Bradbury: There Will Come Soft Rainswww.dennissylvesterhurd.com/blog/softrain.htm" };
+    }*/
 }
 

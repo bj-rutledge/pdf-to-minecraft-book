@@ -21,3 +21,4 @@ D:\OneDrive\Documents\C#Projects\mindcraft-pdf-to-book\mindcraft-pdf-to-book\bin
 D:\OneDrive\Documents\C#Projects\mindcraft-pdf-to-book\mindcraft-pdf-to-book\bin\Debug\net6.0\UglyToad.PdfPig.Tokenization.dll
 D:\OneDrive\Documents\C#Projects\mindcraft-pdf-to-book\mindcraft-pdf-to-book\bin\Debug\net6.0\UglyToad.PdfPig.Tokens.dll
 D:\OneDrive\Documents\C#Projects\mindcraft-pdf-to-book\mindcraft-pdf-to-book\bin\Debug\net6.0\UglyToad.PdfPig.dll
+D:\OneDrive\Documents\C#Projects\mindcraft-pdf-to-book\mindcraft-pdf-to-book\bin\Debug\net6.0\Spectre.Console.dll

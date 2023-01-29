@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "FSeWc/pPeV7he3FAyP2ruiVj90tXvp9nI23SNh63IFZ4+jb64osftFaJBoqT0hisw4WWNP3IYCmakNXdyWtTXg==",
+  "dgSpecHash": "QM92jRil2/wtOfm/0wiH/w/bgdizrtz9XsseDRkUHYSRTrJFjqqc8YDqGl81WB7HroeuFV6zv10RLE1s7B3OEw==",
   "success": true,
   "projectFilePath": "D:\\OneDrive\\Documents\\C#Projects\\mindcraft-pdf-to-book\\mindcraft-pdf-to-book\\mindcraft-pdf-to-book.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\bjrut\\.nuget\\packages\\pdfpig\\0.1.7\\pdfpig.0.1.7.nupkg.sha512"
+    "C:\\Users\\bjrut\\.nuget\\packages\\pdfpig\\0.1.7\\pdfpig.0.1.7.nupkg.sha512",
+    "C:\\Users\\bjrut\\.nuget\\packages\\spectre.console\\0.46.0\\spectre.console.0.46.0.nupkg.sha512",
+    "C:\\Users\\bjrut\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512"
   ],
   "logs": []
 }

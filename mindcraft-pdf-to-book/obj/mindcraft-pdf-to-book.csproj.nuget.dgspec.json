@@ -47,6 +47,10 @@
             "PdfPig": {
               "target": "Package",
               "version": "[0.1.7, )"
+            },
+            "Spectre.Console": {
+              "target": "Package",
+              "version": "[0.46.0, )"
             }
           },
           "imports": [

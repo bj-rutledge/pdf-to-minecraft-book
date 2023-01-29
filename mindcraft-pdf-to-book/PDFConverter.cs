@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 using UglyToad.PdfPig.Content;
 using UglyToad.PdfPig;
 
-namespace PdfToMindcraftBook
+namespace PdfToMineCraftBook
 {
     internal class PDFConversion 
     {
@@ -18,16 +13,33 @@ namespace PdfToMindcraftBook
         private string? title;
         private string? author;
         private bool loaded = false;
-
-
+        private LinkedList<string>? removeStrings;
+        private IEnumerable<Page>? pages;
+        /// <summary>
+        /// Book title. 
+        /// </summary>
         public string? Title
         {
             get { return title; }
         }
-
+        /// <summary>
+        /// Book author. 
+        /// </summary>
         public string? Author
         {
             get { return author; }
+        }
+
+        /// <summary>
+        /// Constructor. 
+        /// Pass path to pdf file and array of strings to delete from pdf.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="stringsToRemove"></param>
+        public PDFConversion(string path, LinkedList<string> stringsToRemove)
+        {
+            this.path = path;
+            this.removeStrings = stringsToRemove;
         }
 
         public PDFConversion(string path)
@@ -35,78 +47,172 @@ namespace PdfToMindcraftBook
             this.path = path;
         }
 
+        /// <summary>
+        /// Load PDF document, sets properties: 
+        /// pages, Title, Author, and sets documentLoaded to true.
+        /// Throws exception if document cannot be loaded. 
+        /// This method must be run before calling any subsequent 
+        /// method. Available after calling will be
+        /// </summary>
+        /// <returns>true on success</returns>
         public bool LoadPDF()
         {
 
             try
             {
                 pdfDocument = PdfDocument.Open(path);
+                this.pages = pdfDocument.GetPages();
                 this.title = pdfDocument.Information.Title != null ? pdfDocument.Information.Title : "Unknown";
                 this.author = pdfDocument.Information.Author != null ? pdfDocument.Information.Author : "Unknown";
+                if(this.pages == null || this.pages.Count() == 0)
+                {
+                    throw new Exception("No pages detected in PDF");
+                }
                 this.loaded = true;
-                return true;
             }
             catch (Exception error)
             {
                 Console.WriteLine("Sorry, Dude, we've encountered an error. Either you messed up, or I suck as a programmer! HA! Try again and let me know what happend.\nError:");
                 Console.WriteLine(error.Message);
-                return false;
+            }
+            return this.loaded;
+        }
+
+        /// <summary>
+        /// View text of PDF
+        /// </summary>
+        public void ViewPDFText()
+        {
+            if (!this.loaded || this.pages == null)
+            {
+                Console.WriteLine("PDF File not loaded. You need to load a pdf, Dude! If you've already done that, something went wrong... Oops. One of us messed up! HAHAHAHA! That's what you get with freeeeeeware. \nHere chicky chicky, bork bork!");
+                return;
+            }
+
+            Console.WriteLine("Title: {0}", Author);
+            Console.WriteLine("Author: {0}\n", Author);
+
+            foreach(Page page in this.pages)
+            {
+                Console.WriteLine(page.Text + '\n');   
             }
         }
 
+        /// <summary>
+        /// Verifies that pdf is loaded, then calls 
+        /// ParseText
+        /// </summary>
+        /// <returns></returns>
         public LinkedList<string>? GenerateBook()
         {
-            if (!this.loaded)
+            if (!loaded)
             {
                 return null;
             }
             //need to create first page 
 
 
-            LinkedList<string> pages = this.ParceText(GetPdfDocument());
-            /** Add the beginning of the page in the following format: 
-             * title: title
-             * author: author name 
-             * pages: \n
-             **/
-            pages.AddFirst(MineCraftBookFormat.NewPage);
-            //first check (if !loaded) gaurintees no null value. 
-            //when loading, we set a value. 
-            #pragma warning disable CS8604 // Dereference of a possibly null reference.
-            pages.AddFirst(Author);
-            pages.AddFirst(Title);
-            #pragma warning restore CS8604 // Dereference of a possibly null reference.
-
-            return pages;
+            LinkedList<string> pagesList = ParseConvertAndRemoveUnwantedText(pdfDocument);
+            return pagesList;
         }
 
-        private PdfDocument? GetPdfDocument()
+        /// <summary>
+        /// Generates book with string removal. 
+        /// </summary>
+        /// <param name="stringsToRemove"></param>
+        /// <returns></returns>
+        public LinkedList<string>? GenerateBook(LinkedList<string> stringsToRemove)
         {
-            return pdfDocument;
+            if (!loaded)
+            {
+                return null;
+            }
+            //need to create first page 
+
+            this.removeStrings = stringsToRemove;
+            LinkedList<string> pagesList = ParseConvertAndRemoveUnwantedText(pdfDocument);
+            return pagesList;
         }
 
-        private LinkedList<string> ParceText(PdfDocument? pdfDocument)
+
+        /// <summary>
+        /// Removes user provided strings of text from the text of the document. 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="strings"></param>
+        /// <returns></returns>
+        private string RemoveText(string text, LinkedList<string> strings)
+        {
+            
+            foreach (string s in strings)
+            {
+                int maxIterations = 10000;
+                int i = 0;
+                while(i < maxIterations)
+                {
+
+                    int textIndex = text.IndexOf(s);
+
+                    if(textIndex == -1)
+                    {
+                        break;
+                    }
+                    StringBuilder sb = new StringBuilder();
+
+                    sb.Append(text.Substring(0, textIndex));
+                    sb.Append(text.Substring(textIndex + s.Length));
+                    text = sb.ToString();
+                    i++;
+                }
+            }
+
+            return text;
+        }
+
+        //TODO need to finish the find space alg so that we can end sentence on a word 
+        private Tuple<int, int> FindSpaceIndex(string text, int start, int end)
+        {
+            char space = ' ';
+
+            Tuple<int, int> result = Tuple.Create(start, end);
+            return result;
+        }
+
+        /// <summary>
+        /// Parse the text retrieved from the PDF file, remove any unwanted text, and convert remaining text to *.stenhal 
+        /// format. 
+        /// </summary>
+        /// <param name="pdfDocument"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        private LinkedList<string> ParseConvertAndRemoveUnwantedText(PdfDocument? pdfDocument)
         {
 
-            var result = new LinkedList<string>();
-            #pragma warning disable CS8602 // Dereference of a possibly null reference.
-            var pages = pdfDocument.GetPages();
-            #pragma warning restore CS8602 // Dereference of a possibly null reference.
-            if (pages.Count() > MineCraftBookFormat.MaxPageCount)
+            var result = InitBookText();
+            // Dereference of a possibly null reference.
+            // pages were validated at instintiation. 
+            #pragma warning disable CS8604
+            if (this.pages.Count() > MineCraftBookFormat.MaxPageCount)
             {
                 throw new Exception("Oops... This book is tooooooooo long. We're only doin' books 100 pages or less right now. Sorry, not sorry! Hahahahahaha! ");
             }
+            // Dereference of a possibly null reference. 
+            // pages were validated at instintiation. 
+            #pragma warning restore CS8604
 
-            //int pageCount = 0;
             foreach (Page page in pages)
             {
-                Console.WriteLine(page.Text + "\n");
+                /*Console.WriteLine(page.Text + "\n");*/
 
                 StringBuilder stringBuilder = new StringBuilder();
-                //pageCount++;
-                //int charCount = 0;
-                string text = page.Text;
-                if (text.Length < 255)
+
+                /* Remove any user provided strings if we have any. Otherwise, procede with 
+                 * the text as is*/
+                string text = (removeStrings != null && removeStrings != null) ? 
+                    RemoveText(page.Text, removeStrings): 
+                    page.Text;
+
+                if (text.Length < MineCraftBookFormat.MaxCharCount)
                 {
                     stringBuilder.Append(MineCraftBookFormat.StartPage);
                     stringBuilder.Append(text);
@@ -115,15 +221,10 @@ namespace PdfToMindcraftBook
                 else
                 {
 
-                    //for(int i = 0, end = 0; i < text.Length - MineCraftBookFormat.MaxCharCount; )
                     int i = 0, end = 0, start = 0;
                     while (i < text.Length)
                     {
-                        //int end = ((i + 255) > (text.Length - 1)) ? 
-                        //   text.Length  - i: 
-                        //  255; 
-
-
+                        
                         if ((i + MineCraftBookFormat.MaxCharCount) > (text.Length - 1))
                         {
                             end = text.Length - i;
@@ -138,33 +239,33 @@ namespace PdfToMindcraftBook
                         }
 
                         string subString = MineCraftBookFormat.StartPage + text.Substring(start, end);
-
-                        //stringBuilder.Append(MineCraftBookFormat.StartPage);
                         stringBuilder.Append(subString);
                     }
 
-                    string output = stringBuilder.ToString();
-                    Debug.WriteLine("Current state.", output);
-
+                    //Get rid of unwanted new line at the end of stringbuilder. 
+                    string output = stringBuilder.ToString().Trim();
                     result.AddLast(output);
-
                 }
-
 
             }
 
             return result;
         }
 
-        private StringBuilder CreateFirstPage()
+        /// <summary>
+        /// Initializes the linked list that will hold the formated 
+        /// text of the book in text/*.stenhal format. 
+        /// Inserts the Title, Author, and Pages tags and subsequent values. 
+        /// </summary>
+        /// <returns></returns>
+        private LinkedList<string> InitBookText()
         {
-            string[] sections = { MineCraftBookFormat.StartPage, MineCraftBookFormat.Title, MineCraftBookFormat.Author, MineCraftBookFormat.NewPage };
-            StringBuilder result = new StringBuilder();
-            foreach (string section in sections)
-            {
-                result.AppendLine(section);
-            }
-            //Debug.WriteLine("DEBUG - Create First page:\n", result.ToString());
+            LinkedList<string> result = new LinkedList<string>();
+
+            result.AddLast(MineCraftBookFormat.Title + Title);
+            result.AddLast(MineCraftBookFormat.Author + Author);
+            result.AddLast(MineCraftBookFormat.Pages);
+            
             return result;
         }
     }
