@@ -335,9 +335,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\OneDrive\\Documents\\C#Projects\\mindcraft-pdf-to-book\\mindcraft-pdf-to-book\\mindcraft-pdf-to-book.csproj",
-      "projectName": "mindcraft-pdf-to-book",
-      "projectPath": "D:\\OneDrive\\Documents\\C#Projects\\mindcraft-pdf-to-book\\mindcraft-pdf-to-book\\mindcraft-pdf-to-book.csproj",
+      "projectUniqueName": "D:\\OneDrive\\Documents\\C#Projects\\mindcraft-pdf-to-book\\mindcraft-pdf-to-book\\MineCraftPDFtoBook.csproj",
+      "projectName": "MineCraftPDFtoBook",
+      "projectPath": "D:\\OneDrive\\Documents\\C#Projects\\mindcraft-pdf-to-book\\mindcraft-pdf-to-book\\MineCraftPDFtoBook.csproj",
       "packagesPath": "C:\\Users\\bjrut\\.nuget\\packages\\",
       "outputPath": "D:\\OneDrive\\Documents\\C#Projects\\mindcraft-pdf-to-book\\mindcraft-pdf-to-book\\obj\\",
       "projectStyle": "PackageReference",

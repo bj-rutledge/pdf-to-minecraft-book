@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QM92jRil2/wtOfm/0wiH/w/bgdizrtz9XsseDRkUHYSRTrJFjqqc8YDqGl81WB7HroeuFV6zv10RLE1s7B3OEw==",
+  "dgSpecHash": "ocR1OidQZ+J2CB04Q1+mpHsZsYWhEtohdDaTq4CkOT089Zhj4nJUpMZ4QBct+j7uqy+Uj0LYHxljvbmUuofELw==",
   "success": true,
-  "projectFilePath": "D:\\OneDrive\\Documents\\C#Projects\\mindcraft-pdf-to-book\\mindcraft-pdf-to-book\\mindcraft-pdf-to-book.csproj",
+  "projectFilePath": "D:\\OneDrive\\Documents\\C#Projects\\mindcraft-pdf-to-book\\mindcraft-pdf-to-book\\MineCraftPDFtoBook.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bjrut\\.nuget\\packages\\pdfpig\\0.1.7\\pdfpig.0.1.7.nupkg.sha512",
     "C:\\Users\\bjrut\\.nuget\\packages\\spectre.console\\0.46.0\\spectre.console.0.46.0.nupkg.sha512",

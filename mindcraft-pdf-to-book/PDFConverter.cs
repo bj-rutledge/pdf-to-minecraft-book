@@ -169,12 +169,25 @@ namespace PdfToMineCraftBook
             return text;
         }
 
-        //TODO need to finish the find space alg so that we can end sentence on a word 
-        private Tuple<int, int> FindSpaceIndex(string text, int start, int end)
+        /// <summary>
+        /// Determine the number of letters we need to subtract to get to a space. 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="index"></param>
+        /// <returns>Number of letters to space going backwards. 0 if current index is space or no space found.</returns>
+        private int NumLettersToSpace(string text, int index)
         {
             char space = ' ';
-
-            Tuple<int, int> result = Tuple.Create(start, end);
+            int result = 0;
+            
+            for(int i =  index, numLetters = 0; i > 0; i--, numLetters++)
+            {
+                if (text[i] == space)
+                {
+                    result = numLetters;
+                    break;
+                }
+            }
             return result;
         }
 
@@ -224,7 +237,14 @@ namespace PdfToMineCraftBook
                     int i = 0, end = 0, start = 0;
                     while (i < text.Length)
                     {
-                        
+
+                        /*Sometimes when we remove a space, there's a leading space. 
+                            * Get rid of leading space if it's present.*/
+                        if (text[i] == ' ' && (i + 1) < text.Length)
+                        {
+                            i++;
+                        }
+
                         if ((i + MineCraftBookFormat.MaxCharCount) > (text.Length - 1))
                         {
                             end = text.Length - i;
@@ -233,9 +253,11 @@ namespace PdfToMineCraftBook
                         }
                         else
                         {
-                            end = MineCraftBookFormat.MaxCharCount;
+                            int numLettersToSpace = NumLettersToSpace(text, i + MineCraftBookFormat.MaxCharCount);
+                            
+                            end = MineCraftBookFormat.MaxCharCount - numLettersToSpace;
                             start = i;
-                            i += MineCraftBookFormat.MaxCharCount;
+                            i += end;
                         }
 
                         string subString = MineCraftBookFormat.StartPage + text.Substring(start, end);
