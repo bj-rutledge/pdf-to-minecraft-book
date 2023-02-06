@@ -22,3 +22,7 @@ D:\OneDrive\Documents\C#Projects\mindcraft-pdf-to-book\mindcraft-pdf-to-book\obj
 D:\OneDrive\Documents\C#Projects\mindcraft-pdf-to-book\mindcraft-pdf-to-book\obj\Release\net6.0\MineCraftPDFtoBook.pdb
 D:\OneDrive\Documents\C#Projects\mindcraft-pdf-to-book\mindcraft-pdf-to-book\obj\Release\net6.0\MineCraftPDFtoBook.genruntimeconfig.cache
 D:\OneDrive\Documents\C#Projects\mindcraft-pdf-to-book\mindcraft-pdf-to-book\obj\Release\net6.0\ref\MineCraftPDFtoBook.dll
+D:\OneDrive\Documents\C#Projects\mindcraft-pdf-to-book\mindcraft-pdf-to-book\bin\Release\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\OneDrive\Documents\C#Projects\mindcraft-pdf-to-book\mindcraft-pdf-to-book\bin\Release\net6.0\System.Drawing.Common.dll
+D:\OneDrive\Documents\C#Projects\mindcraft-pdf-to-book\mindcraft-pdf-to-book\bin\Release\net6.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\OneDrive\Documents\C#Projects\mindcraft-pdf-to-book\mindcraft-pdf-to-book\bin\Release\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll

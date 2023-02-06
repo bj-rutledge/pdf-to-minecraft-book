@@ -253,7 +253,7 @@ namespace PdfToMineCraftBook
                         }
                         else
                         {
-                            int numLettersToSpace = NumLettersToSpace(text, i + MineCraftBookFormat.MaxCharCount);
+                            int numLettersToSpace = this.NumLettersToSpace(text, i + MineCraftBookFormat.MaxCharCount);
                             
                             end = MineCraftBookFormat.MaxCharCount - numLettersToSpace;
                             start = i;

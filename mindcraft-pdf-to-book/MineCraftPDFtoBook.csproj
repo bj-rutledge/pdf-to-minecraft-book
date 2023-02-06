@@ -2,16 +2,23 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>
-	_pdf_to_book</RootNamespace>
+    <TargetFramework>net6.0-windows10.0.17763.0</TargetFramework>
+    <RootNamespace>PdfToMineCraftBook</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <StartupObject>PdfToMineCraftBook.App</StartupObject>
+    <AssemblyName>PDFtoMineCraftBook</AssemblyName>
+    <ApplicationIcon>minecraft_logo_icon_168974.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="minecraft_logo_icon_168974.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="PdfPig" Version="0.1.7" />
     <PackageReference Include="Spectre.Console" Version="0.46.0" />
+    <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
   </ItemGroup>
 
 </Project>
