@@ -9,7 +9,7 @@ Example of Minecraft book:
 title: There Will Come Soft RainsBy
 author: Ray BradburyIn
 pages:
-#-In the living room the voice-clock sang, Tick-tock, seven o'clock, time to get up, time to get up,seven o 'clock! as if it were afraid that nobody would. The morning house lay empty. The clockticked on, repeating
+#- In the living room the voice-clock sang, Tick-tock, seven o'clock, time to get up, time to get up,seven o 'clock! as if it were afraid that nobody would. The morning house lay empty. The clockticked on, repeating
 #- and repeating its sounds into the emptiness. Seven-nine, breakfast time,seven-nine!In the kitchen the breakfast stove gave a hissing sigh and ejected from its warm interior eight piecesof perfectly browned toast, eight eggs sunny side up, sixteen slices of
 #- bacon, two coffees, and twocool glasses of milk."Today is August 4, 2026," said a second voice from the kitchen ceiling, "in the city ofAllendale, California." It repeated the date three times for memory's sake. "Today is Mr.Featherstone's birthday. Today
 #- is the anniversary of Tilita's marriage. Insurance is payable,as are the water, gas, and light bills."Somewhere in the walls, relays clicked, memory tapes glided under electric eyes.Eight-one, tick-tock, eight-one o'clock, off to school, off to work, run,
